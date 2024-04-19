@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[RequireComponent (typeof(Rigidbody))]
+[RequireComponent(typeof(Rigidbody))]
 public class Gravity : MonoBehaviour
 {
     [SerializeField, Range(-1f, 1f)] private float _scale = 1.0f;
