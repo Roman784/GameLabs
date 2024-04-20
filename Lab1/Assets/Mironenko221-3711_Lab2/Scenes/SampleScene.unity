@@ -218,7 +218,8 @@ MonoBehaviour:
   _bulletPrefab: {fileID: -2092525265833867166, guid: b6bbe0aa7f977884d9bfc89d851f1d93, type: 3}
   _shotPoint: {fileID: 1315512063}
   _force: 200
-  _smokeEffect: {fileID: 610844341}
+  _effect: {fileID: 610844341}
+  _sound: {fileID: 8300000, guid: eb001c9da021512468d60afd3e321a8f, type: 3}
 --- !u!1 &288538935
 GameObject:
   m_ObjectHideFlags: 0
@@ -302,6 +303,51 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 288538935}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &410981599
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 410981601}
+  - component: {fileID: 410981600}
+  m_Layer: 0
+  m_Name: SoundPlayer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &410981600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 410981599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92b734e30e0335e4a8dd366c1249308b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sourcerPrefab: {fileID: 9067288483831163629, guid: eb8fb75db06b7d04c9a1f0407adfa1d7, type: 3}
+--- !u!4 &410981601
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 410981599}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.0102572, y: 0.17159283, z: -3.8003469}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &500821041
 GameObject:
   m_ObjectHideFlags: 0
@@ -420,7 +466,7 @@ GameObject:
   - component: {fileID: 610844339}
   - component: {fileID: 610844341}
   m_Layer: 0
-  m_Name: GunSmoke
+  m_Name: ShotSmoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5941,3 +5987,4 @@ SceneRoots:
   - {fileID: 1443456873}
   - {fileID: 500821045}
   - {fileID: 1347289247}
+  - {fileID: 410981601}

@@ -11,7 +11,8 @@ public class Shooter : MonoBehaviour
 
     [Space]
 
-    [SerializeField] private Effect _smokeEffect;
+    [SerializeField] private Effect _effect;
+    [SerializeField] private AudioClip _sound;
 
     private void Update()
     {
@@ -25,7 +26,8 @@ public class Shooter : MonoBehaviour
 
         spawnedBullet.AddForce(GetShotDirection() * _force, ForceMode.Impulse);
 
-        _smokeEffect.Enable();
+        _effect.Enable();
+        SoundPlayer.Instance.Play(_sound, _shotPoint.position);
     }
 
     private Vector3 GetShotDirection()

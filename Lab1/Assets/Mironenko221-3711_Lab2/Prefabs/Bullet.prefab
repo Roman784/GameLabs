@@ -4977,6 +4977,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lifetime: 2
+  _hitSound: {fileID: 8300000, guid: 49cb4243fe4d9264c9b2c2f20d716f82, type: 3}
 --- !u!114 &-8577368625649035215
 MonoBehaviour:
   m_ObjectHideFlags: 0
