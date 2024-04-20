@@ -9,6 +9,10 @@ public class Shooter : MonoBehaviour
 
     [SerializeField] private float _force;
 
+    [Space]
+
+    [SerializeField] private Effect _smokeEffect;
+
     private void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -20,6 +24,8 @@ public class Shooter : MonoBehaviour
         Rigidbody spawnedBullet = Instantiate(_bulletPrefab, _shotPoint.position, Quaternion.identity);
 
         spawnedBullet.AddForce(GetShotDirection() * _force, ForceMode.Impulse);
+
+        _smokeEffect.Enable();
     }
 
     private Vector3 GetShotDirection()
