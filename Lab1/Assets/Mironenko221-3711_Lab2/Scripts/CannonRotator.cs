@@ -1,8 +1,13 @@
 using UnityEngine;
 
-public class Rotator: MonoBehaviour
+public class CannonRotator: MonoBehaviour
 {
     [SerializeField] private float _rate;
+
+    [Space]
+
+    [SerializeField] private Transform _barrel;
+    [SerializeField] private Transform _base;
 
     [Space]
 
@@ -14,13 +19,11 @@ public class Rotator: MonoBehaviour
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
 
-        Vector3 direction = new Vector3(y, x, 0f);
-
-        if (direction != Vector3.zero)
-            Rotate(direction);
+        if (y != 0) Rotate(_barrel, new Vector3(y, 0f, 0f));
+        if (x != 0) Rotate(_base, new Vector3(0f, x, 0f));
     }
 
-    private void Rotate(Vector3 direction)
+    private void Rotate(Transform transform, Vector3 direction)
     {
         Vector3 currentAngles = transform.localEulerAngles;
         Vector3 newAngles = currentAngles + direction * _rate * Time.deltaTime;

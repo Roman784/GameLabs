@@ -20,7 +20,10 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider collider)
     {
-        Debug.Log(collider.name);
+        if (collider.TryGetComponent<Target>(out Target target))
+        {
+            target.TakeDamage(1);
+        }
 
         SoundPlayer.Instance.Play(_hitSound, transform.position);
 

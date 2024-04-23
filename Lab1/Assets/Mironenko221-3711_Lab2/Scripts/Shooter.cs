@@ -17,10 +17,10 @@ public class Shooter : MonoBehaviour
     private void Update()
     {
         if (Input.GetMouseButtonDown(0))
-            MakeShot();
+            PerformShot();
     }
 
-    private void MakeShot()
+    private void PerformShot()
     {
         Rigidbody spawnedBullet = Instantiate(_bulletPrefab, _shotPoint.position, Quaternion.identity);
 
@@ -32,6 +32,6 @@ public class Shooter : MonoBehaviour
 
     private Vector3 GetShotDirection()
     {
-        return -transform.forward;
+        return -_shotPoint.forward;
     }
 }
