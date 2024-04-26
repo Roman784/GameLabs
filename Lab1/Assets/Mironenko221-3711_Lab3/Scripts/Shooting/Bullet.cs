@@ -22,7 +22,7 @@ public class Bullet : MonoBehaviour
     {
         if (collider.TryGetComponent<Target>(out Target target))
         {
-            target.TakeDamage(1);
+            target.TakeHit();
         }
 
         SoundPlayer.Instance.Play(_hitSound, transform.position);
