@@ -14,10 +14,9 @@ public class CannonMover : MonoBehaviour
 
     private void FixedUpdate()
     {
-        float x = Input.GetAxis("Horizontal");
-        float y = Input.GetAxis("Vertical");
+        float input = Input.GetAxis("Vertical");
 
-        Vector3 direction = new Vector3(x, 0f, y);
+        Vector3 direction = transform.forward * input;
 
         if (direction != Vector3.zero)
             Move(direction);
