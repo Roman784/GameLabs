@@ -7,6 +7,8 @@ public class GameOverMenu : MonoBehaviour
 {
     public static GameOverMenu Instance { get; private set; }
 
+    public bool IsGameOver {  get; private set; }
+
     [SerializeField] private GameObject _panel;
     [SerializeField] private Button _restartButton;
 
@@ -24,10 +26,15 @@ public class GameOverMenu : MonoBehaviour
         Instance = this;
 
         _restartButton.onClick.AddListener(RestartLevel);
+
+        IsGameOver = false;
     }
 
     public void GameOver()
     {
+        if (IsGameOver) return;
+        IsGameOver = true;
+
         Time.timeScale = 0f;
 
         _panel.SetActive(true);
@@ -37,6 +44,6 @@ public class GameOverMenu : MonoBehaviour
     private void RestartLevel()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
     }
 }

@@ -8,6 +8,7 @@ public class ScoreCounter : MonoBehaviour
     [SerializeField] private TMP_Text _view;
 
     private int _score;
+    public int Score => _score;
 
     private void Awake()
     {
@@ -18,8 +19,6 @@ public class ScoreCounter : MonoBehaviour
         }
         Instance = this;
     }
-
-    public int Score => _score;
 
     public void Increase(int value)
     {

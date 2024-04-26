@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class CannonRotator: MonoBehaviour
 {
-    [SerializeField] private float _rate;
+    [SerializeField] private float _barrelRate;
+    [SerializeField] private float _cannonRate;
 
     [Space]
 
     [SerializeField] private Transform _barrel;
-    [SerializeField] private Transform _base;
 
     [Space]
 
@@ -31,7 +31,7 @@ public class CannonRotator: MonoBehaviour
     {
         float input = Input.GetAxis("Horizontal");
 
-        Vector3 direction = new Vector3(0f, input, 0f);
+        Vector3 direction = new Vector3(0f, input, 0f) * _cannonRate;
 
         transform.Rotate(direction);
     }
@@ -39,7 +39,7 @@ public class CannonRotator: MonoBehaviour
     private void RotateBarrel()
     {
         Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
-        float range = _rate + Vector3.Distance(_barrel.transform.position, _camera.transform.position);
+        float range = _barrelRate + Vector3.Distance(_barrel.transform.position, _camera.transform.position);
 
         _barrel.transform.LookAt(ray.direction * range + ray.origin);
         _barrel.transform.localEulerAngles = LimitAngles(_barrel.transform.localEulerAngles);
@@ -62,6 +62,6 @@ public class CannonRotator: MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, _rate);
+        Gizmos.DrawWireSphere(transform.position, _barrelRate);
     }
 }
