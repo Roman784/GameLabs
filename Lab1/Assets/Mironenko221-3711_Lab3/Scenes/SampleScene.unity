@@ -211,7 +211,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1318513169}
-  - {fileID: 1177674106}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &203081054
@@ -227,7 +226,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _barrelRate: 8
-  _cannonRate: 2
+  _cannonRate: 1.5
   _barrel: {fileID: 1523706935}
   _upperLimits: {x: 0, y: 45, z: 0}
   _lowerLimits: {x: -45, y: -45, z: 0}
@@ -6486,6 +6485,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1177674106}
+  - component: {fileID: 1177674107}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -6501,14 +6501,29 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1177674105}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.11290681, y: -0.004846786, z: 0.0015963815, w: 0.99359256}
-  m_LocalPosition: {x: 0, y: 5.7200003, z: -8.379999}
+  m_LocalRotation: {x: 0.1129068, y: -0.004846786, z: 0.0015963813, w: 0.99359256}
+  m_LocalPosition: {x: 0, y: 6.1, z: -2.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1113385177}
-  m_Father: {fileID: 203081053}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 12.967, y: -0.545, z: 0.122}
+--- !u!114 &1177674107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1177674105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9381411bef35694cadc3d28af634e3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _target: {fileID: 203081053}
+  _moveSpeed: 8
+  _rotateSpeed: 8
 --- !u!1 &1189455545
 GameObject:
   m_ObjectHideFlags: 0
@@ -6596,8 +6611,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1189455545}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.877834, y: -0.1535114, z: 0.28139728, w: 0.35588938}
-  m_LocalPosition: {x: -13.4, y: 6.81, z: 20.32}
+  m_LocalRotation: {x: 0.877834, y: -0.15351142, z: 0.28139725, w: 0.35588932}
+  m_LocalPosition: {x: -13.4, y: 6.810001, z: 20.319996}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7157,6 +7172,7 @@ MeshFilter:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 1177674106}
   - {fileID: 1189455547}
   - {fileID: 1261157435}
   - {fileID: 1055142374}
