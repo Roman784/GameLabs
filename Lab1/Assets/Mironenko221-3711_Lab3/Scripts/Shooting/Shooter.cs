@@ -32,6 +32,6 @@ public class Shooter : MonoBehaviour
 
     private Vector3 GetShotDirection()
     {
-        return -_shotPoint.forward;
+        return _shotPoint.forward;
     }
 }

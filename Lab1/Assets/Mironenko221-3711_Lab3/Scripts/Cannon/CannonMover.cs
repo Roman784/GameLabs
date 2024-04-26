@@ -1,0 +1,30 @@
+using UnityEngine;
+
+[RequireComponent(typeof(Rigidbody))]
+public class CannonMover : MonoBehaviour
+{
+    [SerializeField] private float _speed;
+
+    private Rigidbody _rigidbody;
+
+    private void Awake()
+    {
+        _rigidbody = GetComponent<Rigidbody>(); 
+    }
+
+    private void FixedUpdate()
+    {
+        float x = Input.GetAxis("Horizontal");
+        float y = Input.GetAxis("Vertical");
+
+        Vector3 direction = new Vector3(x, 0f, y);
+
+        if (direction != Vector3.zero)
+            Move(direction);
+    }
+
+    private void Move(Vector3 direction)
+    {
+        _rigidbody.velocity = direction * _speed * Time.fixedDeltaTime;
+    }
+}

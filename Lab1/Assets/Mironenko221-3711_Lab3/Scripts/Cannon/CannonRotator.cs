@@ -19,7 +19,7 @@ public class CannonRotator: MonoBehaviour
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
 
-        if (y != 0) Rotate(_barrel, new Vector3(y, 0f, 0f));
+        if (y != 0) Rotate(_barrel, new Vector3(-y, 0f, 0f));
         if (x != 0) Rotate(_base, new Vector3(0f, x, 0f));
     }
 
