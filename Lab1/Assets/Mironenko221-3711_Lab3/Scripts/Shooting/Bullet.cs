@@ -6,6 +6,7 @@ public class Bullet : MonoBehaviour
 
     [Space]
 
+    [SerializeField] private GameObject _explosionEffect;
     [SerializeField] private AudioClip _hitSound;
 
     public void Awake()
@@ -15,6 +16,8 @@ public class Bullet : MonoBehaviour
 
     private void Destroy()
     {
+        Instantiate(_explosionEffect, transform.position, Quaternion.identity);
+
         Destroy(gameObject);
     }
 
