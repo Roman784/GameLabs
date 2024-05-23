@@ -24,6 +24,8 @@ public class CannonMover : MonoBehaviour
 
     private void Move(Vector3 direction)
     {
+        if (PauseMenu.IsPaused) return;
+
         _rigidbody.velocity = direction * _speed * Time.fixedDeltaTime;
     }
 }

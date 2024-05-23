@@ -30,7 +30,7 @@ public class Shooter : MonoBehaviour
 
     private void PerformShot()
     {
-        if (!_canShoot || GameOverMenu.Instance.IsGameOver) return;
+        if (!_canShoot || GameOverMenu.Instance.IsGameOver || PauseMenu.IsPaused) return;
 
         Rigidbody spawnedBullet = Instantiate(_bulletPrefab, _shotPoint.position, Quaternion.identity);
 

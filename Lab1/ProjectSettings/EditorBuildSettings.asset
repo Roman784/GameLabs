@@ -6,6 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Mironenko221-3711_Lab3/Scenes/MainMenu.unity
+    guid: 33a2e20009b6d4a48bf652634217e040
+  - enabled: 1
     path: Assets/Mironenko221-3711_Lab3/Scenes/Level1.unity
     guid: 28a5553efbecf60468f785a49c94e6f0
+  - enabled: 1
+    path: Assets/Mironenko221-3711_Lab3/Scenes/Level2.unity
+    guid: ae5d33632eab11143a5e565c11946985
+  - enabled: 1
+    path: Assets/Mironenko221-3711_Lab3/Scenes/Level3.unity
+    guid: cfd6571de4c435a409f2a67422549d49
   m_configObjects: {}

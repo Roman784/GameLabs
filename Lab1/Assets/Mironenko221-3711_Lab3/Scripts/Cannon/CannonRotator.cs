@@ -23,6 +23,13 @@ public class CannonRotator: MonoBehaviour
 
     private void Update()
     {
+        Rotate();
+    }
+
+    private void Rotate()
+    {
+        if (PauseMenu.IsPaused) return;
+
         RotateCannon();
         RotateBarrel();
     }
