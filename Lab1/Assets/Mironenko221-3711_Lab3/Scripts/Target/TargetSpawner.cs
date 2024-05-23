@@ -19,8 +19,11 @@ public class TargetSpawner : MonoBehaviour
     [SerializeField] private Transform _fromPoint;
     [SerializeField] private Transform _toPoint;
 
-    private void Awake()
+    public void Init(float spawnRateMultiplyer, float moveSpeedMultiplyer)
     {
+        _repeateRate *= spawnRateMultiplyer;
+        _moveSpeed *= moveSpeedMultiplyer;
+
         InvokeRepeating(nameof(Spawn), _startDelay, _repeateRate);
     }
 
