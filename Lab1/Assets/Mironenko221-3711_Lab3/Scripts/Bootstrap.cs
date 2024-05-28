@@ -1,27 +1,35 @@
 using System.Collections;
+using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine;
 
 public class Bootstrap : MonoBehaviour
 {
+    public static Bootstrap Instance { get; private set; }
+
     [SerializeField] private int _levelNumber;
+    public int LevelNumber => _levelNumber;
 
     [Space]
 
     [SerializeField] private TargetDifficultyData targetDifficultyData;
     [SerializeField] private TargetSpawner[] _targetSpawners;
 
-    private IEnumerator Start()
+    private void Awake()
     {
-        yield return LoadGameData();
+        Instance = this;
+    }
+
+    private void Start()
+    {
+        UpdateBestScore();
         InitTargetSpawners();
     }
 
-    private IEnumerator LoadGameData()
+    private void UpdateBestScore()
     {
-         Task task = Repository.Instance.LoadAsync();
-        yield return new WaitUntil(() => task.IsCompleted);
-
+        int score = Repository.Instance.GetBestScore(_levelNumber);
+        ScoreCounter.Instance.UpdateBestScore(score);
     }
 
     private void InitTargetSpawners()

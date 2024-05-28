@@ -1,3 +1,4 @@
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -39,11 +40,25 @@ public class GameOverMenu : MonoBehaviour
 
         _panel.SetActive(true);
         _scoreView.text = "Score: " + ScoreCounter.Instance.Score.ToString();
+
+        SaveBestScore();
     }
 
     private void RestartLevel()
     {
         Time.timeScale = 1f;
         SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
+    }
+
+    private void SaveBestScore()
+    {
+        int currentScore = ScoreCounter.Instance.Score;
+        int levelNumber = Bootstrap.Instance.LevelNumber;
+        int savedScore = Repository.Instance.GetBestScore(levelNumber);
+
+        if (savedScore < currentScore)
+        {
+            Repository.Instance.UpdateScoreAsync(levelNumber, currentScore);
+        }
     }
 }

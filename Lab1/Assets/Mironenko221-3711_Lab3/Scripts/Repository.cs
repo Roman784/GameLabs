@@ -17,97 +17,17 @@ public class Repository
         }
     }
 
-    public GameData GameData { get; private set; }
-
-    private string _savePath;
-
-    private Repository()
+    public int GetBestScore(int levelNumber)
     {
-        _savePath = Path.Combine (Application.dataPath, "gameData.json");
+        string key = "Level" + levelNumber.ToString();
+        if (PlayerPrefs.HasKey(key))
+            return PlayerPrefs.GetInt(key);
+        return 0;
     }
 
-    public async Task SaveAsync()
+    public void UpdateScoreAsync(int levelNumber, int value)
     {
-        try
-        {
-            string json = JsonUtility.ToJson(GameData, true);
-            await File.WriteAllTextAsync (_savePath, json);
-
-            Debug.Log("Save data complete");
-        }
-        catch { Debug.Log("Save data error"); }
+        string key = "Level" + levelNumber.ToString();
+        PlayerPrefs.SetInt(key, value);
     }
-
-    public async Task LoadAsync()
-    {
-        try
-        {
-            if (!File.Exists(_savePath))
-            {
-                Debug.Log("File not exist");
-
-                DefaultDataAsync();
-                return;
-            }
-
-            string json = await File.ReadAllTextAsync(_savePath);
-            GameData = JsonUtility.FromJson<GameData>(json);
-
-            Debug.Log("Load data complete");
-        }
-        catch { Debug.Log("Load data error"); }
-    }
-
-    public async void UpdateScoreAsync(int levelNumber, int value)
-    {
-        Score score = GameData.Scores.FirstOrDefault(s => s.LevelNumber == levelNumber);
-
-        if (score == null)
-        {
-            AddScoreAsync(levelNumber, value);
-            return;
-        }
-
-        score.Value = value;
-
-        await SaveAsync();
-    }
-
-    private async void AddScoreAsync(int levelNumber, int value)
-    {
-        Score newScore = new Score()
-        {
-            LevelNumber = levelNumber,
-            Value = value
-        };
-
-        GameData.Scores.Add(newScore);
-
-        await SaveAsync();
-    }
-
-    private async void DefaultDataAsync()
-    {
-        GameData = new GameData()
-        {
-            Scores = new List<Score>()
-        };
-
-        Debug.Log("Default data");
-
-        await SaveAsync();
-    }
-}
-
-[System.Serializable]
-public class GameData
-{
-    public List<Score> Scores = new List<Score>();
-}
-
-[System.Serializable]
-public class Score
-{
-    public int LevelNumber { get; set; }
-    public int Value {  get; set; }
 }
