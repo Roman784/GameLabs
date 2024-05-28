@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class Bootstrap : MonoBehaviour
@@ -9,9 +11,17 @@ public class Bootstrap : MonoBehaviour
     [SerializeField] private TargetDifficultyData targetDifficultyData;
     [SerializeField] private TargetSpawner[] _targetSpawners;
 
-    private void Awake()
+    private IEnumerator Start()
     {
+        yield return LoadGameData();
         InitTargetSpawners();
+    }
+
+    private IEnumerator LoadGameData()
+    {
+         Task task = Repository.Instance.LoadAsync();
+        yield return new WaitUntil(() => task.IsCompleted);
+
     }
 
     private void InitTargetSpawners()
